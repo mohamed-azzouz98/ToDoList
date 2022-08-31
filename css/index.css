@@ -1,0 +1,40 @@
+body{
+    margin :0;
+    padding: 0;
+
+}
+
+/*------Form Register------*/
+/*------Form Register------*/
+/*------Form Register------*/
+#containerFormRegister{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center; 
+}
+
+#containerFormRegister input{
+    display: block;
+    margin: auto;
+}
+
+
+
+
+
+
+/*------Form Login------*/
+/*------Form Login------*/
+/*------Form Login------*/
+
+#containerFormLogin{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center; 
+}
+
+
+#containerFormLogin input{
+    display: block;
+    margin: auto;
+}
