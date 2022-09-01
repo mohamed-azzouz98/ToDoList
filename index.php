@@ -8,8 +8,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) { // si la session n'est pas active
     session_start(); // on la démarre 
 }
 if (!empty($_SESSION["id"])) {
-    // Si c'est le cas on le redirige vers la page 2
-    header('Location: tdl.php');
+    // Si c'est le cas on le redirige
+    header('Location: tdl/showTodo.php');
 }
 
 

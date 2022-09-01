@@ -29,12 +29,14 @@ function addTodo($db, $id_user, $title, $description, $dateBegin, $dateEnd, $sta
  */
 function showTodo($db, $id_user)
 {
-    $sql = "SELECT * FROM todo WHERE id_user :id_user";
+    $sql = "SELECT * FROM todo WHERE id_user = :id_user";
     $prepareSql = $db->prepare($sql);
 
-    $prepareSql->bindParam(":id_user", $id_user);
+    $prepareSql->bindParam(":id_user", $id_user, PDO::PARAM_STR);
     $prepareSql->execute();
-    return $prepareSql->fetch(PDO::FETCH_BOTH);
+    return $prepareSql->fetchAll(PDO::FETCH_ASSOC);
+    
+    
 }
 
 
@@ -46,7 +48,10 @@ function showTodo($db, $id_user)
  */
 
 
-function updateTodo(){
+function updateTodo($db, $id_todo,  $title, $description, $dateBegin, $dateEnd, $status, $categorie)
+{
+    
+
 
 }
 

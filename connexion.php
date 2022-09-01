@@ -9,7 +9,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) { // si la session n'est pas active
 }
 if (!empty($_SESSION["id"])) {
     // Si c'est le cas on le redirige vers la page 2
-    header('Location: tdl.php');
+    header('Location: tdl/showTodo.php');
 }
 
 
@@ -68,7 +68,7 @@ $pseudo = filter_input(INPUT_POST, 'pseudoLogin', FILTER_SANITIZE_FULL_SPECIAL_C
                        
                         $_SESSION['id'] = $connect['id'];
                         $_SESSION['pseudo'] = $connect['pseudo'];
-                        header('Location: tdl.php');
+                        header('Location: tdl/showTodo.php');
                     } else {
                         echo "Mot de passe ou pseudo incorrect";
                     }
