@@ -43,73 +43,88 @@ $email = filter_input(INPUT_POST, 'emailRegister', FILTER_VALIDATE_EMAIL, FILTER
 </head>
 
 <body>
-    <section id="containerFormRegister">
+    <main class="index">
 
-        <form action="index.php" method="post">
+        <section class="containerForm">
+            <section class="formRegister">
+                <form action="index.php" method="post">
 
-            <label for="pseudo">Pseudo : </label>
-            <input type="text" name="pseudoRegister" id="pseudoRegister" pattern="[A-Za-z0-9]{5,20}" required>
+                    <label for="pseudo">Pseudo : </label>
+                    <input type="text" name="pseudoRegister" id="pseudoRegister" pattern="[A-Za-z0-9]{5,20}" required>
 
+                    <br>
 
-            <label for="email">Email : </label>
-            <input type="text" name="emailRegister" id="emailRegister" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    <label for="email">Email : </label>
+                    <input type="text" name="emailRegister" id="emailRegister" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
-            <label for="password">Password : </label>
-            <input type="password" name="passwordRegister" id="passwordRegister" minlength="8" required>
+                    <br>
 
-            <label for="confirmPassword">Confirm Password : </label>
-            <input type="password" name="confirmPasswordRegister" id="confirmPasswordRegister" minlength="8" required>
+                    <label for="password">Password : </label>
+                    <input type="password" name="passwordRegister" id="passwordRegister" minlength="8" required>
 
-            <input type="submit" value="Register" name="register" id="register">
+                    <br>
 
-        </form>
-        <?php
+                    <label for="confirmPassword">Confirm Password : </label>
+                    <input type="password" name="confirmPasswordRegister" id="confirmPasswordRegister" minlength="8" required>
 
-        if (isset($_POST['register'])) {
-            // On Verifie si les champs sont bien remplie
-            if (!empty($pseudo) and  !empty($email) and !empty($password) and !empty($confirmPassword)) {
+                    <br>
 
-                // On verifie si l'adresse mail existe déja
+                    <input type="submit" value="Register" name="register" class="registerButton">
 
-                $result = getUserEmail($db, $email);
-
-
-                if ($result[0] == 0) {
-
-                    //Si l'email n'existe pas on passe à l'étape suivant et on verifie si les 2mdp correspondent 
-                    if ($password == $confirmPassword) {
-                        //On hash le password
-                        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                </form>
+            </section>
 
 
-                        //On Insert le nouveau user dans la bdd
-                        $user_id = createUser($db, $email, $pseudo, $passwordHash);
-                        if ($user_id) {
-                            header('Location: connexion.php');
+            <?php
+
+            if (isset($_POST['register'])) {
+                // On Verifie si les champs sont bien remplie
+                if (!empty($pseudo) and  !empty($email) and !empty($password) and !empty($confirmPassword)) {
+
+                    // On verifie si l'adresse mail existe déja
+
+                    $result = getUserEmail($db, $email);
+
+
+                    if ($result[0] == 0) {
+
+                        //Si l'email n'existe pas on passe à l'étape suivant et on verifie si les 2mdp correspondent 
+                        if ($password == $confirmPassword) {
+                            //On hash le password
+                            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+
+                            //On Insert le nouveau user dans la bdd
+                            $user_id = createUser($db, $email, $pseudo, $passwordHash);
+                            if ($user_id) {
+                                header('Location: connexion.php');
+                            } else {
+                                echo '<div class = "error">Cette Adresse est déja utilisé</div>';
+                            }
                         } else {
-                            echo 'Cette Adresse est déja utilisé';
+                            echo "<div class = 'error'>Les mots de passe ne correspondent pas</div>";
                         }
                     } else {
-                        echo "Les mots de passe ne correspondent pas";
+                        echo "<div class = 'error'>Cette Adresse est déja utilisé</div>";
                     }
                 } else {
-                    echo "Cette Adresse est déja utilisé";
+                    echo "<div class = 'error'>Veuillez entré un pseudo Valide</div>";
                 }
-            } else {
-                echo "Veuillez entré un pseudo Valide";
             }
-        }
 
 
-        ?>
+            ?>
 
-        <a href="connexion.php">Sign In</a>
+            <a id="signInButton" href="connexion.php">Sign In</a>
 
-    </section>
+        </section>
+
+    </main>
 
 
 
-    
+
+
 </body>
 
 </html>

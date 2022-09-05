@@ -34,54 +34,63 @@ $pseudo = filter_input(INPUT_POST, 'pseudoLogin', FILTER_SANITIZE_FULL_SPECIAL_C
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
     <title>Connexion</title>
 </head>
 
 <body>
-    <section id="containerFormLogin">
+    <main class='index'>
+        <section class="containerForm">
+            <section class="formRegister">
+                <form action="connexion.php" method="post">
 
-        <form action="connexion.php" method="post">
+                    <label for="pseudoLogin">Pseudo</label>
+                    <input type="text" name="pseudoLogin" id="pseudoLogin">
 
-            <label for="pseudoLogin">Pseudo</label>
-            <input type="text" name="pseudoLogin" id="pseudoLogin">
+                    <label for="passwordLogin">Password</label>
+                    <input type="password" name="passwordLogin" id="passwordLogin">
 
-            <label for="passwordLogin">Password</label>
-            <input type="password" name="passwordLogin" id="passwordLogin">
+                    <br>
 
-            <input type="submit" value="Login" name="login">
+                    <input type="submit" value="Login" name="login" class = 'registerButton'>
 
-        </form>
-        <?php
+                </form>
+                <?php
 
-        if (isset($_POST['login'])) {
-            
-            if (!empty($pseudo) and !empty($password)) {
-                
-                $connect = connectUser($db, $pseudo);
+                if (isset($_POST['login'])) {
 
-                
+                    if (!empty($pseudo) and !empty($password)) {
+
+                        $connect = connectUser($db, $pseudo);
 
 
-                if ($connect['pseudo']) {
-                   
-                    if (password_verify($password, $connect['password'])) {
-                       
-                        $_SESSION['id'] = $connect['id'];
-                        $_SESSION['pseudo'] = $connect['pseudo'];
-                        header('Location: tdl/showTodo.php');
-                    } else {
-                        echo "Mot de passe ou pseudo incorrect";
+
+
+                        if ($connect['pseudo']) {
+
+                            if (password_verify($password, $connect['password'])) {
+
+                                $_SESSION['id'] = $connect['id'];
+                                $_SESSION['pseudo'] = $connect['pseudo'];
+                                header('Location: tdl/showTodo.php');
+                            } else {
+                                echo "<div class = 'error'>Mot de passe ou pseudo incorrect</div>";
+                            }
+                        } else {
+                            echo "<div class = 'error'>Mot de passe ou pseudo incorrect</div>";
+                        }
                     }
-                } else {
-                    echo "Mot de passe ou pseudo incorrect";
                 }
-            }
-        }
 
-       
-        ?>
 
-    </section>
+                ?>
+            </section>
+
+
+
+        </section>
+    </main>
+
 
 </body>
 

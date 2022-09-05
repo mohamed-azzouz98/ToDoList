@@ -4,37 +4,60 @@ body{
 
 }
 
-/*------Form Register------*/
-/*------Form Register------*/
-/*------Form Register------*/
-#containerFormRegister{
-    width: 50%;
+.index{
+   height: 980px;
+   
+    background-image: url('../img/indexBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*------Form------*/
+/*------Form------*/
+/*------Form------*/
+.containerForm{
+    width: 20%;
     margin: 0 auto;
     text-align: center; 
+    padding: 20px;
+    
 }
 
-#containerFormRegister input{
+.containerForm input{
     display: block;
     margin: auto;
 }
 
+.formRegister{
+    background-color: #F5D1D1;
+    margin-top: 250px;
+    padding: 20px;
+}
 
+.registerButton{
+   
+    padding: 20px;
+    border-style: solid;
+    border-color: grey;
+}
 
-
-
-
-/*------Form Login------*/
-/*------Form Login------*/
-/*------Form Login------*/
-
-#containerFormLogin{
-    width: 50%;
-    margin: 0 auto;
-    text-align: center; 
+.error{
+    padding: 5px;
+    color: red;
+    
 }
 
 
-#containerFormLogin input{
+#signInButton{
     display: block;
-    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+    border-style: solid;
+    border-color: grey;
+    text-decoration: none;
+    
+    
+    
+    
+    
+
 }
