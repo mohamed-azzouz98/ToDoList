@@ -52,13 +52,13 @@ $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPEC
             <form action="" method="post" class = "addUpdateForm">
                 <label for="title">Titre : </label>
                 <br>
-                <input type="text" name="title" id="title">
+                <input type="text" name="title" id="title" minlength="5">
                 
                 <br>
 
                 <label for="description">Description : </label>
                 <br>
-                <textarea name="description" id="description" cols="30" rows="7"></textarea>
+                <textarea name="description" id="description" cols="30" rows="7" minlength="5"></textarea>
 
                 <br>
 

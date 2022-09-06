@@ -57,23 +57,49 @@ if (isset($_GET['id_todo'])) {
 
                 <label for="title">Titre : </label>
                 <br>
-                <input type="text" name="title" id="title" value="<?php echo $tache[0]['titre'] ? $tache[0]['titre'] : ''; ?>">
+                <input type="text" name="title" id="title" minlength="1" value="<?php echo $tache[0]['titre'] ? $tache[0]['titre'] : ''; ?>">
 
                 <br>
 
                 <label for="description">Description : </label>
                 <br>
-                <textarea name="description" id="description" cols="30" rows="7"><?php echo $tache[0]['description']; ?></textarea>
+                <textarea name="description" id="description" minlength="1" cols="30" rows="7"><?php echo $tache[0]['description']; ?></textarea>
 
                 <br>
 
                 <label for="status">Status : </label>
                 <br>
-                <select name="status" id="status">
-                    <option value="A Faire">A Faire</option>
+
+                <?php
+
+                if ($tache[0]['status'] == 'A Faire') {
+                    echo '
+                    <select name="status" id="status">
+                    <option value="A Faire" selected>A Faire</option>
                     <option value="En cours">En cours</option>
                     <option value="Terminé">Terminé</option>
                 </select>
+                    ';
+                }
+                elseif ($tache[0]['status'] == 'En cours') {
+                    echo '
+                    <select name="status" id="status">
+                    <option value="A Faire">A Faire</option>
+                    <option value="En cours" selected>En cours</option>
+                    <option value="Terminé">Terminé</option>
+                </select>
+                    ';
+                }
+                elseif ($tache[0]['status'] == 'Terminé') {
+                    echo '
+                    <select name="status" id="status">
+                    <option value="A Faire">A Faire</option>
+                    <option value="En cours">En cours</option>
+                    <option value="Terminé" selected>Terminé</option>
+                </select>
+                    ';
+                }
+                ?>
 
                 <br>
 
