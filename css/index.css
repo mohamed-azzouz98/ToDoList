@@ -54,10 +54,21 @@ body{
     border-style: solid;
     border-color: grey;
     text-decoration: none;
-    
-    
-    
-    
-    
+}
 
+
+@media all and (max-width: 680px){
+    .containerForm{
+        width: 300px;
+        margin: 0 auto;
+        text-align: center; 
+        padding: 20px;
+        
+    }
+
+    .containerForm input{
+        width: 200px;
+        display: block;
+        margin: auto;
+    }
 }
